@@ -7,10 +7,11 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 def start(bot, update):
-    update.effective_message.reply_text("Hi!")
+    update.effective_message.reply_text("Привет! Это бот команды по пос-кредитованию онлайн. Куратор: Серёгин Дмитрий")
 
 def echo(bot, update):
-    update.effective_message.reply_text(yandex(update.effective_message.text))
+    #update.effective_message.reply_text(yandex(update.effective_message.text))
+    update.effective_message.reply_text('response')
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
@@ -23,6 +24,7 @@ def yandex(message):
 
     r = requests.post(url, data={'key': key, 'text': text, 'lang': lang})
     result = json.loads(r.text)
+
     return ' '.join(result['text'])
 
 if __name__ == "__main__":
